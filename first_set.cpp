@@ -127,12 +127,12 @@ vector<string> split(const string &str, const char &delimiter) {
 }
 
 void saveToProductArray(string inputArray_local[], int numbersOfGrammar) {
-    // save LHS to productArray
+    // save LHS from inputArray to productArray
     for (int p_row = 0, i_index = 0; p_row < numbersOfGrammar; p_row++, i_index += 2) {
         productArray[p_row][0] = inputArray_local[i_index];
     }
 
-    // save RHS to productArray
+    // save RHS from inputArray to productArray
     size_t p_column;
     for (int p_row = 0, i_index = 1; p_row <= numbersOfGrammar; p_row++, i_index += 2) { // productArray's p_row, inputArray_local's i_index
         p_column = 1;
