@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
-//#define DEBUG
+#define DEBUG
 #define INPUT_NUM 20
 #define PRODUCT_MAX_SIZE 10
 using namespace std;
@@ -53,6 +53,7 @@ int main() {
         }
         cout << endl;
     }
+    cout << "------------------------------" << endl;
 #endif
 
 #if defined(DEBUG)
@@ -64,6 +65,7 @@ int main() {
         }
         cout << endl;
     }
+    cout << "------------------------------" << endl;
 #endif
 
     // create the non-terminal list, and initial them as being visited first
@@ -79,6 +81,7 @@ int main() {
     for (int i = 0; i < nonTerminalList.size(); i++) {
         cout << nonTerminalList[i].symbol << endl;
     }
+    cout << "------------------------------" << endl;
 #endif
 
     for (size_t p_row = 0; p_row < PRODUCT_MAX_SIZE; p_row++) {
@@ -91,7 +94,10 @@ int main() {
             initialVisit();
             addLambdaInFirstSet = false;
 
+            // productArray[p_row][0] is LHS in a grammar
+            // productArray[p_row][1] is the first choose RHS in a grammar
             int p_column = 1;
+            // while break when finish an iteration of a set of choices of RHS in a grammar
             while (!productArray[p_row][p_column].empty()) {
                 vector<char> temp = first(productArray[p_row][p_column]);
                 firstSet.insert(firstSet.end(), temp.begin(), temp.end());
@@ -208,7 +214,7 @@ void internalFirst(string &alpha, vector<char> &result, size_t Xn, size_t xn) { 
             symbolDerivesEmpty = true;
             return;
         }
-        // RHS meets terminal
+        // RHS meets terminal symbol
         else if ((97 <= alpha[xn] && alpha[xn] <= 122) || alpha[xn] == 36) {
 
             result.push_back(alpha[xn]);
@@ -216,7 +222,7 @@ void internalFirst(string &alpha, vector<char> &result, size_t Xn, size_t xn) { 
             addLambdaInFirstSet = false;
             return;
         }
-        // RHS meets non-terminal
+        // RHS meets non-terminal symbol
         else if (65 <= alpha[xn] && alpha[xn] <= 90) {
 
             if (visitedFirst(alpha[xn])) {
