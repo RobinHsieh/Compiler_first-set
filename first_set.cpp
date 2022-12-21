@@ -6,7 +6,7 @@
 #define PRODUCT_MAX_SIZE 10
 using namespace std;
 
-// self-defined class declaration --------------------------------
+// self-defined type declaration ---------------------------------
 typedef struct {
     char symbol;
     bool visitFirst;
