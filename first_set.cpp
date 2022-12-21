@@ -138,7 +138,7 @@ vector<string> split(const string &str, const char &delimiter) {
     vector<string> result;
     stringstream ss(str);
     string tok;
-    while (std::getline(ss, tok, delimiter)) {
+    while (getline(ss, tok, delimiter)) {
         result.push_back(tok);
     }
     return result;
