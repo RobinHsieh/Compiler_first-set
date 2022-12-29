@@ -17,10 +17,7 @@ typedef struct {
 string inputArray[INPUT_NUM];
 string input;
 string productArray[PRODUCT_MAX_SIZE][PRODUCT_MAX_SIZE];
-
 vector<Non_Terminal> nonTerminalList;
-
-//bool symbolDerivesEmpty;
 bool addLambdaInFirstSet;
 
 // function declaration, aka prototype ---------------------------
@@ -273,7 +270,6 @@ void internalFirst(char lhs, string &alpha, vector<char> &result, size_t Xn, siz
 
                             size_t p_column = 1;
                             while (!productArray[p_row][p_column].empty()) {
-                                //symbolDerivesEmpty = false;
 
                                 internalFirst(productArray[p_row][0].at(0), productArray[p_row][p_column], result, productArray[p_row][p_column].length(), 0);
                                 p_column++;
